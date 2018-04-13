@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">Happy Birthday 2 You</string>
+    <string name="FName">First Name</string>
+    <string name="LName">Last Name</string>
+    <string name="Month">Month</string>
+    <string name="Day">Day</string>
+    <string name="Submit">Submit</string>
+    <string name="Jan">January</string>
+    <string name="Feb">February</string>
+    <string name="Mar">March</string>
+    <string name="Apr">April</string>
+    <string name="May">May</string>
+    <string name="June">June</string>
+    <string name="Jul">July</string>
+    <string name="Aug">August</string>
+    <string name="Sep">September</string>
+    <string name="Oct">October</string>
+    <string name="Nov">November</string>
+    <string name="Dec">December</string>
 </resources>
