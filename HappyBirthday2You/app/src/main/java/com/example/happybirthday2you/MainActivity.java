@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity
     private TextView edit_name;
     private TextView edit_month;
     private TextView edit_day;
-    private TextView finish_text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -31,13 +30,24 @@ public class MainActivity extends AppCompatActivity
         edit_name = findViewById(R.id.editName);
         edit_month = findViewById(R.id.editMonth);
         edit_day = findViewById(R.id.editDay);
-        finish_text = findViewById(R.id.finishText);
     }
 
     public void saveBirthday(View view)
     {
-        if (checkBirthday())
+        if (edit_name.getText().toString().equalsIgnoreCase("") ||
+                edit_month.getText().toString().equalsIgnoreCase("") ||
+                edit_day.getText().toString().equalsIgnoreCase(""))
         {
+            edit_name.setText("");
+            edit_name.setHint("Make sure you enter your name");
+            edit_month.setText("");
+            edit_month.setHint("Make sure the month is valid");
+            edit_day.setText("");
+            edit_day.setHint("Make sure the day is valid");
+        }
+        else if (checkBirthday())
+        {
+            edit_name.setHint("Enter your name");
             edit_month.setHint("Enter month");
             edit_day.setHint("Enter day");
 
@@ -75,6 +85,7 @@ public class MainActivity extends AppCompatActivity
         else
         {
             edit_name.setText("");
+            edit_name.setHint("Make sure you enter your name");
             edit_month.setText("");
             edit_month.setHint("Make sure the month is valid");
             edit_day.setText("");
@@ -97,9 +108,7 @@ public class MainActivity extends AppCompatActivity
 
     public boolean checkBirthday()
     {
-        if (edit_month == null)
-            return false;
-        else if (edit_month.getText().toString().equalsIgnoreCase("January") ||
+        if (edit_month.getText().toString().equalsIgnoreCase("January") ||
                 edit_month.getText().toString().equalsIgnoreCase("March") ||
                 edit_month.getText().toString().equalsIgnoreCase("May") ||
                 edit_month.getText().toString().equalsIgnoreCase("July") ||
