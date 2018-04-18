@@ -108,34 +108,36 @@ public class MainActivity extends AppCompatActivity
 
     public boolean checkBirthday()
     {
-        if (edit_month.getText().toString().equalsIgnoreCase("January") ||
-                edit_month.getText().toString().equalsIgnoreCase("March") ||
-                edit_month.getText().toString().equalsIgnoreCase("May") ||
-                edit_month.getText().toString().equalsIgnoreCase("July") ||
-                edit_month.getText().toString().equalsIgnoreCase("August") ||
-                edit_month.getText().toString().equalsIgnoreCase("October") ||
-                edit_month.getText().toString().equalsIgnoreCase("December"))
+        String temp_month = edit_month.getText().toString();
+        int temp_day = Integer.parseInt(edit_day.getText().toString());
+        if (temp_month.equalsIgnoreCase("January") || temp_month.equals("1") ||
+                temp_month.equalsIgnoreCase("March") || temp_month.equals("3") ||
+                temp_month.equalsIgnoreCase("May") || temp_month.equals("5") ||
+                temp_month.equalsIgnoreCase("July") || temp_month.equals("7") ||
+                temp_month.equalsIgnoreCase("August") || temp_month.equals("8") ||
+                temp_month.equalsIgnoreCase("October") || temp_month.equals("10") ||
+                temp_month.equalsIgnoreCase("December") || temp_month.equals("12"))
         {
-            if (Integer.parseInt(edit_day.getText().toString()) <= 31 &&  Integer.parseInt(edit_day.getText().toString()) >= 1)
+            if (temp_day <= 31 && temp_day >= 1)
                 return true;
             else
                 return false;
         }
 
-        else if (edit_month.getText().toString().equalsIgnoreCase("April") ||
-                edit_month.getText().toString().equalsIgnoreCase("June") ||
-                edit_month.getText().toString().equalsIgnoreCase("September") ||
-                edit_month.getText().toString().equalsIgnoreCase("November"))
+        else if (temp_month.equalsIgnoreCase("April") || temp_month.equals("4") ||
+                temp_month.equalsIgnoreCase("June") || temp_month.equals("6") ||
+                temp_month.equalsIgnoreCase("September") || temp_month.equals("9") ||
+                temp_month.equalsIgnoreCase("November") temp_month.equals("11"))
         {
-            if (Integer.parseInt(edit_day.getText().toString()) <= 30 &&  Integer.parseInt(edit_day.getText().toString()) >= 1)
+            if (temp_day <= 30 && temp_day >= 1)
                 return true;
             else
                 return false;
         }
 
-        else if (edit_month.getText().toString().equalsIgnoreCase("February"))
+        else if (temp_month.equalsIgnoreCase("February") || temp_month.equals("2"))
         {
-            if (Integer.parseInt(edit_day.getText().toString()) <= 29 &&  Integer.parseInt(edit_day.getText().toString()) >= 1)
+            if (temp_day <= 29 && temp_day >= 1)
                 return true;
             else
                 return false;
