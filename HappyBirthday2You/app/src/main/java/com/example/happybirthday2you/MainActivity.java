@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity
         else if (temp_month.equalsIgnoreCase("April") || temp_month.equals("4") ||
                 temp_month.equalsIgnoreCase("June") || temp_month.equals("6") ||
                 temp_month.equalsIgnoreCase("September") || temp_month.equals("9") ||
-                temp_month.equalsIgnoreCase("November") temp_month.equals("11"))
+                temp_month.equalsIgnoreCase("November") || temp_month.equals("11"))
         {
             if (temp_day <= 30 && temp_day >= 1)
                 return true;
