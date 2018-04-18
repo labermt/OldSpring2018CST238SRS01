@@ -1,7 +1,11 @@
 # CST238SRS01
 Happy Birthday 2 You
 
-Name: 
+Name: Jake Knudsen
+
+Unresolved Issues: None
+
+Notes: None
 
 ---
 
