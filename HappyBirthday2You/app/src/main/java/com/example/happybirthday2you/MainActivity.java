@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity
     private TextView edit_name;
     private TextView edit_month;
     private TextView edit_day;
+    private TextView edit_count;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity
         edit_name = findViewById(R.id.editName);
         edit_month = findViewById(R.id.editMonth);
         edit_day = findViewById(R.id.editDay);
+        edit_count = findViewById(R.id.editCount);
     }
 
     public void saveBirthday(View view)
@@ -41,14 +43,14 @@ public class MainActivity extends AppCompatActivity
             edit_name.setText("");
             edit_name.setHint("Make sure you enter your name");
             edit_month.setText("");
-            edit_month.setHint("Make sure the month is valid");
+            edit_month.setHint("Make sure the name of month is valid");
             edit_day.setText("");
             edit_day.setHint("Make sure the day is valid");
         }
         else if (checkBirthday())
         {
             edit_name.setHint("Enter your name");
-            edit_month.setHint("Enter month");
+            edit_month.setHint("Enter name of month");
             edit_day.setHint("Enter day");
 
             String temp_month = edit_month.getText().toString().toLowerCase();
@@ -61,13 +63,16 @@ public class MainActivity extends AppCompatActivity
                 edit_name.setText("");
                 edit_month.setText("");
                 edit_day.setText("");
+                edit_count.setText("Count: " + names.size());
             }
             else if (matchBirthday(temp_month, temp_day))
             {
+                edit_count.setText("Count: " + names.size());
                 String finish_str = (names.elementAt(months.indexOf(temp_month)) +
                         " and you(" +
                         edit_name.getText().toString() +
-                        ") share the same birthday on " + temp_month + " " + temp_day + "!");
+                        ") share the same birthday on " + temp_month + " " + temp_day + "!\nTotal Birthdays: " +
+                        names.size());
                 Intent intent = new Intent(this, FinishedActivity.class);
                 intent.putExtra(FINISH_MESSAGE, finish_str);
                 startActivity(intent);
@@ -80,6 +85,7 @@ public class MainActivity extends AppCompatActivity
                 edit_name.setText("");
                 edit_month.setText("");
                 edit_day.setText("");
+                edit_count.setText("Count: " + names.size());
             }
         }
         else
@@ -87,7 +93,7 @@ public class MainActivity extends AppCompatActivity
             edit_name.setText("");
             edit_name.setHint("Make sure you enter your name");
             edit_month.setText("");
-            edit_month.setHint("Make sure the month is valid");
+            edit_month.setHint("Make sure the name of month is valid");
             edit_day.setText("");
             edit_day.setHint("Make sure the day is valid");
         }
@@ -110,13 +116,13 @@ public class MainActivity extends AppCompatActivity
     {
         String temp_month = edit_month.getText().toString();
         int temp_day = Integer.parseInt(edit_day.getText().toString());
-        if (temp_month.equalsIgnoreCase("January") || temp_month.equals("1") ||
-                temp_month.equalsIgnoreCase("March") || temp_month.equals("3") ||
-                temp_month.equalsIgnoreCase("May") || temp_month.equals("5") ||
-                temp_month.equalsIgnoreCase("July") || temp_month.equals("7") ||
-                temp_month.equalsIgnoreCase("August") || temp_month.equals("8") ||
-                temp_month.equalsIgnoreCase("October") || temp_month.equals("10") ||
-                temp_month.equalsIgnoreCase("December") || temp_month.equals("12"))
+        if (temp_month.equalsIgnoreCase("January") ||
+                temp_month.equalsIgnoreCase("March") ||
+                temp_month.equalsIgnoreCase("May") ||
+                temp_month.equalsIgnoreCase("July") ||
+                temp_month.equalsIgnoreCase("August") ||
+                temp_month.equalsIgnoreCase("October") ||
+                temp_month.equalsIgnoreCase("December"))
         {
             if (temp_day <= 31 && temp_day >= 1)
                 return true;
@@ -124,10 +130,10 @@ public class MainActivity extends AppCompatActivity
                 return false;
         }
 
-        else if (temp_month.equalsIgnoreCase("April") || temp_month.equals("4") ||
-                temp_month.equalsIgnoreCase("June") || temp_month.equals("6") ||
-                temp_month.equalsIgnoreCase("September") || temp_month.equals("9") ||
-                temp_month.equalsIgnoreCase("November") || temp_month.equals("11"))
+        else if (temp_month.equalsIgnoreCase("April") ||
+                temp_month.equalsIgnoreCase("June") ||
+                temp_month.equalsIgnoreCase("September") ||
+                temp_month.equalsIgnoreCase("November"))
         {
             if (temp_day <= 30 && temp_day >= 1)
                 return true;
@@ -135,7 +141,7 @@ public class MainActivity extends AppCompatActivity
                 return false;
         }
 
-        else if (temp_month.equalsIgnoreCase("February") || temp_month.equals("2"))
+        else if (temp_month.equalsIgnoreCase("February"))
         {
             if (temp_day <= 29 && temp_day >= 1)
                 return true;

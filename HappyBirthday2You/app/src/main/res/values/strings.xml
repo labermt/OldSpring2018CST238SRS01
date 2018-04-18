@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">Happy Birthday 2 You</string>
     <string name="edit_name">Enter your name</string>
-    <string name="edit_month">Enter month</string>
+    <string name="edit_month">Enter name of month</string>
     <string name="edit_day">Enter day</string>
     <string name="submit_button">Submit</string>
     <string name="finish_text">Finished</string>
+    <string name="edit_count">Count: 0</string>
 </resources>
