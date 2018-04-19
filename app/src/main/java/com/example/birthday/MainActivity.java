@@ -40,172 +40,147 @@ public class MainActivity extends AppCompatActivity implements TextWatcher{
             }
         }
         if(!month.getText().toString().equals("") && !day.getText().toString().equals("")) {
-        if((Integer.parseInt(month.getText().toString()) == 1) && (Integer.parseInt(day.getText().toString()) < 1 ||
-                Integer.parseInt(day.getText().toString()) > 31)){
-            day.setError("Invalid day");
-        }
+            if ((Integer.parseInt(month.getText().toString()) == 1) && (Integer.parseInt(day.getText().toString()) < 1 ||
+                    Integer.parseInt(day.getText().toString()) > 31)) {
+                day.setError("Invalid day");
+            } else if ((Integer.parseInt(month.getText().toString()) == 2) && (Integer.parseInt(day.getText().toString()) < 1 ||
+                    (Integer.parseInt(day.getText().toString()) > 29)))
+                day.setError("Invalid day.");
 
-        else if((Integer.parseInt(month.getText().toString()) == 2) && (Integer.parseInt(day.getText().toString()) < 1 ||
-                (Integer.parseInt(day.getText().toString()) > 29 || (Integer.parseInt(day.getText().toString()) > 28 &&
-                        Integer.parseInt(year.getText().toString()) % 4 != 0)))){
-            day.setError("Invalid day.");
-        }
+            else if (!year.getText().toString().equals("")) {
+                if ((Integer.parseInt(month.getText().toString()) == 2) && (Integer.parseInt(day.getText().toString()) == 29 &&
+                        Integer.parseInt(year.getText().toString()) % 4 != 0)) {
+                    day.setError("Invalid day.");
+                }
+            } else if ((Integer.parseInt(month.getText().toString()) == 3) && (Integer.parseInt(day.getText().toString()) < 1 ||
+                    Integer.parseInt(day.getText().toString()) > 31)) {
+                day.setError("Invalid day.");
+            } else if ((Integer.parseInt(month.getText().toString()) == 4) && (Integer.parseInt(day.getText().toString()) < 1 ||
+                    Integer.parseInt(day.getText().toString()) > 30)) {
+                day.setError("Invalid day.");
+            } else if ((Integer.parseInt(month.getText().toString()) == 5) && (Integer.parseInt(day.getText().toString()) < 1 ||
+                    Integer.parseInt(day.getText().toString()) > 31)) {
+                day.setError("Invalid day.");
+            } else if ((Integer.parseInt(month.getText().toString()) == 6) && (Integer.parseInt(day.getText().toString()) < 1 ||
+                    Integer.parseInt(day.getText().toString()) > 30)) {
+                day.setError("Invalid day.");
+            } else if ((Integer.parseInt(month.getText().toString()) == 7) && (Integer.parseInt(day.getText().toString()) < 1 ||
+                    Integer.parseInt(day.getText().toString()) > 31)) {
+                day.setError("Invalid day.");
+            } else if ((Integer.parseInt(month.getText().toString()) == 8) && (Integer.parseInt(day.getText().toString()) < 1 ||
+                    Integer.parseInt(day.getText().toString()) > 31)) {
+                day.setError("Invalid day.");
+            } else if ((Integer.parseInt(month.getText().toString()) == 9) && (Integer.parseInt(day.getText().toString()) < 1 ||
+                    Integer.parseInt(day.getText().toString()) > 30)) {
+                day.setError("Invalid day.");
+            } else if ((Integer.parseInt(month.getText().toString()) == 10) && (Integer.parseInt(day.getText().toString()) < 1 ||
+                    Integer.parseInt(day.getText().toString()) > 31)) {
+                day.setError("Invalid day.");
+            } else if ((Integer.parseInt(month.getText().toString()) == 11) && (Integer.parseInt(day.getText().toString()) < 1 ||
+                    Integer.parseInt(day.getText().toString()) > 30)) {
+                day.setError("Invalid day.");
+            } else if ((Integer.parseInt(month.getText().toString()) == 12) && (Integer.parseInt(day.getText().toString()) < 1 ||
+                    Integer.parseInt(day.getText().toString()) > 31)) {
+                day.setError("Invalid day.");
+            } else day.setError(null);
 
-        else if((Integer.parseInt(month.getText().toString()) == 3) && (Integer.parseInt(day.getText().toString()) < 1 ||
-                Integer.parseInt(day.getText().toString()) > 31)){
-            day.setError("Invalid day.");
-        }
-
-        else if((Integer.parseInt(month.getText().toString()) == 4) && (Integer.parseInt(day.getText().toString()) < 1 ||
-                Integer.parseInt(day.getText().toString()) > 30)) {
-            day.setError("Invalid day.");
-        }
-        else if((Integer.parseInt(month.getText().toString()) == 5) && (Integer.parseInt(day.getText().toString()) < 1 ||
-                Integer.parseInt(day.getText().toString()) > 31))
-        {
-            day.setError("Invalid day.");
-        }
-        else if((Integer.parseInt(month.getText().toString()) == 6) && (Integer.parseInt(day.getText().toString()) < 1 ||
-                Integer.parseInt(day.getText().toString()) > 30))
-        {
-            day.setError("Invalid day.");
-        }
-        else if((Integer.parseInt(month.getText().toString()) == 7) && (Integer.parseInt(day.getText().toString()) < 1 ||
-                Integer.parseInt(day.getText().toString()) > 31))
-        {
-            day.setError("Invalid day.");
-        }
-        else if((Integer.parseInt(month.getText().toString()) == 8) && (Integer.parseInt(day.getText().toString()) < 1 ||
-                Integer.parseInt(day.getText().toString()) > 31))
-        {
-            day.setError("Invalid day.");
-        }
-        else if((Integer.parseInt(month.getText().toString()) == 9) && (Integer.parseInt(day.getText().toString()) < 1 ||
-                Integer.parseInt(day.getText().toString()) > 30))
-        {
-            day.setError("Invalid day.");
-        }
-        else if((Integer.parseInt(month.getText().toString()) == 10) && (Integer.parseInt(day.getText().toString()) < 1 ||
-                Integer.parseInt(day.getText().toString()) > 31))
-        {
-            day.setError("Invalid day.");
-        }
-        else if((Integer.parseInt(month.getText().toString()) == 11) && (Integer.parseInt(day.getText().toString()) < 1 ||
-                Integer.parseInt(day.getText().toString()) > 30))
-        {
-            day.setError("Invalid day.");
-        }
-        else if((Integer.parseInt(month.getText().toString()) == 12) && (Integer.parseInt(day.getText().toString()) < 1 ||
-                Integer.parseInt(day.getText().toString()) > 31))
-        {
-            day.setError("Invalid day.");
-        }
-        else day.setError(null);
-
-        if((Integer.parseInt(month.getText().toString()) == 2) && (Integer.parseInt(day.getText().toString()) == 29) &&
-                (Integer.parseInt(year.getText().toString()) % 4 == 0))
-            day.setError(null);
+            if (!year.getText().toString().equals("")) {
+                if ((Integer.parseInt(month.getText().toString()) == 2) && (Integer.parseInt(day.getText().toString()) == 29) &&
+                        (Integer.parseInt(year.getText().toString()) % 4 == 0))
+                    day.setError(null);
+            }
         }
     }
 
     public Boolean isValid(){
+        boolean emptyField = false;
         if( TextUtils.isEmpty(name.getText())){
             name.setError( "Name is required" );
-            return false;
+            emptyField = true;
         }
 
         if( TextUtils.isEmpty(month.getText()))
         {
             month.setError( "Month is required" );
-            return false;
+            emptyField = true;
         }
         if( TextUtils.isEmpty(day.getText()))
         {
             day.setError( "Day is required" );
-            return false;
+            emptyField = true;
         }
         if( TextUtils.isEmpty(year.getText()))
         {
             year.setError( "Year is required" );
-            return false;
+            emptyField = true;
         }
 
+        if(emptyField)
+            return false;
+
         if(Integer.parseInt(month.getText().toString()) < 1 || (Integer.parseInt(month.getText().toString()) > 12)) {
-            month.setError("Invalid month");
             return false;
         }
 
 
         if((Integer.parseInt(month.getText().toString()) == 1) && (Integer.parseInt(day.getText().toString()) < 1 ||
                 Integer.parseInt(day.getText().toString()) > 31)){
-            day.setError("Invalid day");
             return false;
         }
 
         else if((Integer.parseInt(month.getText().toString()) == 2) && (Integer.parseInt(day.getText().toString()) < 1 ||
                 (Integer.parseInt(day.getText().toString()) > 29 || (Integer.parseInt(day.getText().toString()) > 28 &&
                         Integer.parseInt(year.getText().toString()) % 4 != 0)))){
-            day.setError("Invalid day.");
             return false;
         }
 
         else if((Integer.parseInt(month.getText().toString()) == 3) && (Integer.parseInt(day.getText().toString()) < 1 ||
                 Integer.parseInt(day.getText().toString()) > 31)){
-            day.setError("Invalid day.");
             return false;
         }
 
         else if((Integer.parseInt(month.getText().toString()) == 4) && (Integer.parseInt(day.getText().toString()) < 1 ||
                 Integer.parseInt(day.getText().toString()) > 30)) {
-            day.setError("Invalid day.");
             return false;
         }
         else if((Integer.parseInt(month.getText().toString()) == 5) && (Integer.parseInt(day.getText().toString()) < 1 ||
                 Integer.parseInt(day.getText().toString()) > 31))
         {
-            day.setError("Invalid day.");
             return false;
         }
         else if((Integer.parseInt(month.getText().toString()) == 6) && (Integer.parseInt(day.getText().toString()) < 1 ||
                 Integer.parseInt(day.getText().toString()) > 30))
         {
-            day.setError("Invalid day.");
             return false;
         }
         else if((Integer.parseInt(month.getText().toString()) == 7) && (Integer.parseInt(day.getText().toString()) < 1 ||
                 Integer.parseInt(day.getText().toString()) > 31))
         {
-            day.setError("Invalid day.");
             return false;
         }
         else if((Integer.parseInt(month.getText().toString()) == 8) && (Integer.parseInt(day.getText().toString()) < 1 ||
                 Integer.parseInt(day.getText().toString()) > 31))
         {
-            day.setError("Invalid day.");
             return false;
         }
         else if((Integer.parseInt(month.getText().toString()) == 9) && (Integer.parseInt(day.getText().toString()) < 1 ||
                 Integer.parseInt(day.getText().toString()) > 30))
         {
-            day.setError("Invalid day.");
             return false;
         }
         else if((Integer.parseInt(month.getText().toString()) == 10) && (Integer.parseInt(day.getText().toString()) < 1 ||
                 Integer.parseInt(day.getText().toString()) > 31))
         {
-            day.setError("Invalid day.");
             return false;
         }
         else if((Integer.parseInt(month.getText().toString()) == 11) && (Integer.parseInt(day.getText().toString()) < 1 ||
                 Integer.parseInt(day.getText().toString()) > 30))
         {
-            day.setError("Invalid day.");
             return false;
         }
         else if((Integer.parseInt(month.getText().toString()) == 12) && (Integer.parseInt(day.getText().toString()) < 1 ||
                 Integer.parseInt(day.getText().toString()) > 31))
         {
-            day.setError("Invalid day.");
             return false;
         }
         else return true;
