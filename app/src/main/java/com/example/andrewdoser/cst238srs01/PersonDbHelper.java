@@ -2,6 +2,7 @@ package com.example.andrewdoser.cst238srs01;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.view.View;
@@ -48,5 +49,18 @@ public class PersonDbHelper extends SQLiteOpenHelper {
             return false;
         else
             return true;
+    }
+
+    public Cursor getAllData(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("select * from " + PersonDB.Person.TABLE_NAME, null);
+        return res;
+    }
+    public void deleteData()
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(PersonDB.Person.TABLE_NAME, null, null);
+        db.close();
+
     }
 }

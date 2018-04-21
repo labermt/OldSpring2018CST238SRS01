@@ -1,6 +1,7 @@
 package com.example.andrewdoser.cst238srs01;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,7 +20,10 @@ public class MainActivity extends AppCompatActivity {
     EditText mMM;
     EditText mDD;
     Button mButton;
-    //public int count = 0;
+    public String[] name = new String[40];
+    public String[] date = new String[40];
+    public boolean match = false;
+    public int count = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,8 +102,6 @@ public class MainActivity extends AppCompatActivity {
                     {
                         if(validationSuccess())
                         {
-                            int month = Integer.parseInt(mMM.getText().toString().trim());
-                            int day = Integer.parseInt(mDD.getText().toString().trim());
                             boolean isInserted = myDB.insertData(mName.getText().toString().trim(), mMM.getText().toString().trim(), mDD.getText().toString().trim());
                             if(isInserted == true)
                             {
@@ -109,7 +111,74 @@ public class MainActivity extends AppCompatActivity {
                                 TextView TsubMessage = (TextView) Tsub.getView().findViewById(android.R.id.message);
                                 Tsub.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 0, 0);
                                 TsubMessage.setTextColor(Color.rgb(0, 142, 0));
-                                Tsub.show();
+                                Cursor res = myDB.getAllData();
+                                count++;
+                                if(res.getCount() == 0)
+                                {
+                                    return;
+                                }
+                                else
+                                {
+                                    int i = 0;
+
+                                    String comp = "";
+                                    StringBuffer buffer = new StringBuffer();
+                                    while (res.moveToNext())
+                                    {
+
+                                        buffer.append(res.getString(1));
+                                        name[i] = buffer.toString().trim();
+                                        buffer.delete(0, buffer.length());
+                                        buffer.append(res.getString(2));
+                                        buffer.append("/" + res.getString(3));
+                                        date[i] = buffer.toString().trim();
+                                        buffer.delete(0, buffer.length());
+                                        i++;
+                                    }
+                                    int j =0;
+                                    comp = date[i-1];
+                                    if(i > 1)
+                                    {
+                                        for (j =0; j < i-1; j++)
+                                        {
+
+                                        if(comp.equals(date[j]))
+                                        {
+                                            match = true;
+                                            break;
+
+                                        }
+                                        else
+                                        {
+                                            match = false;
+                                        }
+
+                                        }
+                                    }
+                                    else
+                                    {
+                                            match = false;
+                                    }
+                                    if(!match)
+                                    {
+                                        Sub = "Successfully Submitted information";
+                                        Tsub = Toast.makeText(getApplicationContext(), Sub, duration);
+                                        TsubMessage = (TextView) Tsub.getView().findViewById(android.R.id.message);
+                                        Tsub.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 0, 0);
+                                        TsubMessage.setTextColor(Color.rgb(0, 142, 0));
+                                        Tsub.show();
+                                    }
+                                    else{
+                                        Sub = "Congratulations!\n" + name[j] + " shares the same birthday with you!";
+                                        Tsub = Toast.makeText(getApplicationContext(), Sub, duration);
+                                        Tsub.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL, 0, 0);
+                                        TsubMessage.setTextColor(Color.rgb(0, 0, 142));
+                                        Tsub.show();
+                                        myDB.deleteData();
+                                    }
+
+
+                                }
                             }
                             //if(WriteToFile())
                            // {
