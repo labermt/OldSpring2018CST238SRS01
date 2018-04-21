@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Birthday</string>
+    <string name="enter_name">Name</string>
+    <string name="enter_month">Month</string>
+    <string name="enter_day">Day</string>
+    <string name="enter_year">Year</string>
+    <string name="enter">Enter</string>
+
+</resources>
