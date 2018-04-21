@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">TC_Birthday Match</string>
+    <string name="name">Name</string>
+    <string name="day">Day</string>
+    <string name="enter">ENTER</string>
+    <string name="month">Month</string>
+    <string name="count">#</string>
+    <string name="message">Enter your name and birthday</string>
+    <string name="DayString">Day</string>
+</resources>
