@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
-    DatabaseHelper myDB;
+
     EditText mName;
     EditText mMM;
     EditText mDD;
@@ -25,12 +25,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        myDB = new DatabaseHelper(this);
         mName = findViewById(R.id.editTextName);
         mMM = findViewById(R.id.editTextMonth);
         mDD = findViewById(R.id.editTextDay);
         mButton = findViewById(R.id.buttonSubmit);
-
+        final PersonDbHelper myDB = new PersonDbHelper(this);
 
         mName.addTextChangedListener(new TextValidator(mName) {
             @Override public void validate(TextView textView, String text) {
@@ -101,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                         {
                             int month = Integer.parseInt(mMM.getText().toString().trim());
                             int day = Integer.parseInt(mDD.getText().toString().trim());
-                            boolean isInserted = myDB.insertData(mName.getText().toString().trim(), month, day);
+                            boolean isInserted = myDB.insertData(mName.getText().toString().trim(), mMM.getText().toString().trim(), mDD.getText().toString().trim());
                             if(isInserted == true)
                             {
                                 CharSequence Sub = "Successfully Submitted information";
