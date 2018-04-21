@@ -1,10 +1,10 @@
 package com.example.andrewdoser.cst238srs01;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,21 +12,25 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class MainActivity extends AppCompatActivity {
 
+public class MainActivity extends AppCompatActivity {
+    DatabaseHelper myDB;
     EditText mName;
     EditText mMM;
     EditText mDD;
     Button mButton;
+    //public int count = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+       // myDB = new DatabaseHelper(this);
         mName = findViewById(R.id.editTextName);
         mMM = findViewById(R.id.editTextMonth);
         mDD = findViewById(R.id.editTextDay);
         mButton = findViewById(R.id.buttonSubmit);
+
 
         mName.addTextChangedListener(new TextValidator(mName) {
             @Override public void validate(TextView textView, String text) {
@@ -95,12 +99,29 @@ public class MainActivity extends AppCompatActivity {
                     {
                         if(validationSuccess())
                         {
-                            CharSequence Sub = "Successfully Submitted information";
-                            int duration = Toast.LENGTH_LONG;
-                            Toast Tsub = Toast.makeText(getApplicationContext(), Sub, duration);
-                            TextView TsubMessage = (TextView) Tsub.getView().findViewById(android.R.id.message);
-                            TsubMessage.setTextColor(Color.GREEN);
-                            Tsub.show();
+
+
+                            //if(WriteToFile())
+                           // {
+                                //count++;
+                              /*  CharSequence Sub = "Successfully Submitted information";
+                                int duration = Toast.LENGTH_LONG;
+                                Toast Tsub = Toast.makeText(getApplicationContext(), Sub, duration);
+                                TextView TsubMessage = (TextView) Tsub.getView().findViewById(android.R.id.message);
+                                Tsub.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 0, 0);
+                                TsubMessage.setTextColor(Color.rgb(0, 142, 0));
+                                Tsub.show();*/
+                            //}
+                            //if(ReadFromFile())
+                            //{
+                                /*CharSequence Test = Bday[0];
+                                int dur = Toast.LENGTH_LONG;
+                                Toast Ttest = Toast.makeText(getApplicationContext(), Test, dur);
+                                TextView TtestMessage = (TextView) Ttest.getView().findViewById(android.R.id.message);
+                                Ttest.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 0, 0);
+                                TtestMessage.setTextColor(Color.rgb(0, 142, 0));
+                                Ttest.show();*/
+                            //}
                         }
 
 
@@ -111,7 +132,8 @@ public class MainActivity extends AppCompatActivity {
 
 }
 
-    private Boolean validationSuccess(){
+    private Boolean validationSuccess()
+    {
         Context context = getApplicationContext();
        /* if(mName.getText().toString().equalsIgnoreCase("")){
             Toast.makeText(getApplicationContext(),"Please enter name",0).show();
@@ -141,6 +163,11 @@ public class MainActivity extends AppCompatActivity {
         TnovMessage.setTextColor(Color.RED);
         TextView TsepMessage = (TextView) Tsep.getView().findViewById(android.R.id.message);
         TsepMessage.setTextColor(Color.RED);
+        Tfeb.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 0, 0);
+        Tapr.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 0, 0);
+        Tjun.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 0, 0);
+        Tnov.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 0, 0);
+        Tsep.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 0, 0);
             int imonth = Integer.parseInt(month);
             int iday = Integer.parseInt(day);
 
@@ -187,22 +214,5 @@ public class MainActivity extends AppCompatActivity {
 
         return true;
     }
-/*   Random random = new Random();
-   int RanNum = random.nextInt(MaxNumber-MinNumber)+MinNumber;
-   String StringEditNum= editTextNum.getText().toString();
-    if(!StringEditNum.equals("")){
-        int EditNum = Integer.parseInt(StringEditNum);
-        if (EditNum >RanNum){
-            textViewStatus.setText("Enter Higher Number");
-        }else if(EditNum <RanNum){
-            textViewStatus.setText("Enter Lower Numer!");
-        }else {
-            textViewStatus.setText("You won! You Nutz!");
-        }
-    } else{
-            Toast.makeText(MainActivity.this,"Try again!",Toast.LENGTH_SHORT).show();
-        }*/
-
-
 
 }
