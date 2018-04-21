@@ -25,7 +25,10 @@ import android.widget.Toast;
 import org.w3c.dom.Text;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -42,14 +45,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Context context = getApplicationContext();
+        OpenFiletoArrays();
         final Button myButton = findViewById(R.id.button);
-        final EditText myTextBox = findViewById(R.id.TextFieldFName);
+        final EditText myTextBoxFirstName = findViewById(R.id.TextFieldFName);
+        final EditText myTextBoxLastName = findViewById(R.id.TextFieldLName);
         InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
         final Spinner daySpinner = findViewById(R.id.spinnerDay);
+
         daySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 Day = daySpinner.getSelectedItem().toString();
-                myButton.callOnClick();
+                HideKeyboard();
             }
 
             public void onNothingSelected(AdapterView<?> adapterView) {
@@ -58,12 +64,12 @@ public class MainActivity extends AppCompatActivity {
         });
         if (imm != null) {
             // only will trigger it if no physical keyboard is open
-            imm.showSoftInput(myTextBox, 0);
+            imm.showSoftInput(myTextBoxFirstName, 0);
         }
-        myTextBox.addTextChangedListener(new TextWatcher() {
+        myTextBoxFirstName.addTextChangedListener(new TextWatcher() {
         //see TextValidator class for location of TextValidator source
             public void afterTextChanged(Editable s) {
-                myTextBox.addTextChangedListener(new TextValidator(myTextBox) {
+                myTextBoxFirstName.addTextChangedListener(new TextValidator(myTextBoxFirstName) {
                     @Override public void validate(TextView textView, String text) {
                         if(text == null)
                         {   textView.setError("Empty");   }
@@ -76,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                             else
                             {
-                                textView.setError("Empty Spaces Detected");
+                                textView.setError("Empty!!");
                             }
                         }
 
@@ -86,6 +92,75 @@ public class MainActivity extends AppCompatActivity {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
             public void onTextChanged(CharSequence s, int start, int before, int count) {}
         });
+        myTextBoxLastName.addTextChangedListener(new TextWatcher() {
+            //see TextValidator class for location of TextValidator source
+            public void afterTextChanged(Editable s) {
+                myTextBoxLastName.addTextChangedListener(new TextValidator(myTextBoxLastName) {
+                    @Override public void validate(TextView textView, String text) {
+                        if(text == null)
+                        {   textView.setError("Empty");   }
+                        else
+                        {
+                            text.trim();
+                            if(!text.isEmpty())
+                            {
+                                textView.setError(null);
+                            }
+                            else
+                            {
+                                textView.setError("Empty!!!");
+                            }
+                        }
+
+                    }
+                });
+            }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+        });
+    }
+    public void HideKeyboard()
+    {
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        //to hide it, call the method again
+        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+    }
+    public void OpenFiletoArrays()
+    {
+        FileInputStream fis;
+        try {
+            fis = openFileInput("Names");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            NameList = (ArrayList<String>) ois.readObject();
+            ois.close();
+            fis = openFileInput("Dates");
+            ObjectInputStream ois2 = new ObjectInputStream(fis);
+            NameList = (ArrayList<String>) ois2.readObject();
+            ois2.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void writeToFile(String filename)
+    {
+        java.io.FileOutputStream outputStream;
+
+        try {
+            outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
+            ObjectOutputStream oos = new ObjectOutputStream(outputStream);
+            if(filename == "Names")
+            {
+                oos.writeObject(NameList);
+            }
+            else if(filename == "Dates")
+            {
+                oos.writeObject(DateList);
+            }
+            outputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     /** Called when the user touches the button */
     public void StoreAndCompare(View view) {
@@ -99,8 +174,6 @@ public class MainActivity extends AppCompatActivity {
             String FirstNameString = FirstNameText.getText().toString();
             EditText LastNameText = findViewById(R.id.TextFieldLName);
             String LastName = LastNameText.getText().toString();
-            RadioGroup myRadioGroup = findViewById(R.id.radioGroup);
-            Spinner mySpinner = findViewById(R.id.spinnerDay);
             String CompleteName = FirstNameString + " " + LastName;
             String Date = CurrentMonth + " " + Day;
 
@@ -110,6 +183,8 @@ public class MainActivity extends AppCompatActivity {
                 toast = Toast.makeText(this, text , duration);
                 toast.setGravity(Gravity.TOP| Gravity.LEFT, Gravity.CENTER_HORIZONTAL, Gravity.CENTER_VERTICAL);  //lets me change the location of toast
                 toast.show();
+                deleteFile("Names");
+                deleteFile("Dates");
                 ClearData();
                 Entries = 0;
             } else {
@@ -117,8 +192,8 @@ public class MainActivity extends AppCompatActivity {
                 toast.show();
                 NameList.add(CompleteName);
                 DateList.add(Date);
-                writeToFile("Names", CompleteName);
-                writeToFile("Dates", Date);
+                writeToFile("Names");
+                writeToFile("Dates");
                 Entries++;
                 ResetForm();
             }}
@@ -129,8 +204,8 @@ public class MainActivity extends AppCompatActivity {
                 DateList = new ArrayList<>();
                 NameList.add(CompleteName);
                 DateList.add(Date);
-                writeToFile("Names", CompleteName);
-                writeToFile("Dates", Date);
+                writeToFile("Names");
+                writeToFile("Dates");
                 Entries++;
 
                 ResetForm();
@@ -147,17 +222,6 @@ public class MainActivity extends AppCompatActivity {
        }
     }
 
-public void writeToFile(String filename, String fileContents)
-{
-    FileOutputStream outputStream;
-    try {
-        outputStream = openFileOutput(filename, Context.MODE_APPEND);
-        outputStream.write(fileContents.getBytes());
-        outputStream.close();
-    } catch (Exception e) {
-        e.printStackTrace();
-    }
-}
 public void ClearData()
 {
     NameList.clear();
@@ -353,6 +417,6 @@ public void ResetForm()
                 CurrentMonth = "Dec";
                 break;
 
-        }
+        }        HideKeyboard();
     }
 }
