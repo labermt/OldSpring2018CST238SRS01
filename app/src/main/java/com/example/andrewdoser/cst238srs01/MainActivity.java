@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
     public String[] date = new String[40];
     public boolean match = false;
     public int count = 0;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
