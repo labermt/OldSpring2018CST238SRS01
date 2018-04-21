@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-       // myDB = new DatabaseHelper(this);
+        myDB = new DatabaseHelper(this);
         mName = findViewById(R.id.editTextName);
         mMM = findViewById(R.id.editTextMonth);
         mDD = findViewById(R.id.editTextDay);
@@ -99,8 +99,19 @@ public class MainActivity extends AppCompatActivity {
                     {
                         if(validationSuccess())
                         {
-
-
+                            int month = Integer.parseInt(mMM.getText().toString().trim());
+                            int day = Integer.parseInt(mDD.getText().toString().trim());
+                            boolean isInserted = myDB.insertData(mName.getText().toString().trim(), month, day);
+                            if(isInserted == true)
+                            {
+                                CharSequence Sub = "Successfully Submitted information";
+                                int duration = Toast.LENGTH_LONG;
+                                Toast Tsub = Toast.makeText(getApplicationContext(), Sub, duration);
+                                TextView TsubMessage = (TextView) Tsub.getView().findViewById(android.R.id.message);
+                                Tsub.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 0, 0);
+                                TsubMessage.setTextColor(Color.rgb(0, 142, 0));
+                                Tsub.show();
+                            }
                             //if(WriteToFile())
                            // {
                                 //count++;
@@ -216,3 +227,4 @@ public class MainActivity extends AppCompatActivity {
     }
 
 }
+
