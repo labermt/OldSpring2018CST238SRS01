@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import static java.lang.Integer.parseInt;
 
-
 public class MainActivity extends AppCompatActivity {
 
     private EditText nameText;
@@ -112,15 +111,15 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
                 if(isValidDate(month, dayStr)){
-                    Integer monthInt = monthToInteger(month);
-                    Person newPerson = new Person(name, monthInt, parseInt(dayStr));
-                    People.add(newPerson);
-                    if(matchFound(newPerson)) {
-                        Person match = getMatch(newPerson);
-                        String display = match.Name + " and " + newPerson.Name + " have the same birthday!\n" +
-                                "Total people: " + String.valueOf(People.size());
-                        displayText.setText(display);
-                        People.clear();
+                            Integer monthInt = monthToInteger(month);
+                            Person newPerson = new Person(name, monthInt, parseInt(dayStr));
+                            People.add(newPerson);
+                            if(matchFound(newPerson)) {
+                                Person match = getMatch(newPerson);
+                                String display = match.Name + " and " + newPerson.Name + " have the same birthday!\n" +
+                                        "Total people: " + String.valueOf(People.size());
+                                displayText.setText(display);
+                                People.clear();
                     }
                     nameText.setText(null);
                     monthText.setText(null);
