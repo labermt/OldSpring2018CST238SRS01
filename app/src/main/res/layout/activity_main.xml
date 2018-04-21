@@ -14,14 +14,13 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:ems="10"
+        android:hint="First Name"
         android:inputType="textPersonName"
-
-        android:text="@string/FName"
+        android:selectAllOnFocus="true"
         app:layout_constraintEnd_toStartOf="@+id/TextFieldLName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewFName"
 
-        />
+        app:layout_constraintTop_toBottomOf="@+id/textViewFName" />
 
     <EditText
         android:id="@+id/TextFieldLName"
@@ -33,8 +32,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:ems="10"
+        android:hint="Last Name"
         android:inputType="textPersonName"
-        android:text="@string/LName"
+        android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/TextFieldFName"
         app:layout_constraintTop_toBottomOf="@+id/textViewLName" />
@@ -99,7 +99,7 @@
         android:id="@+id/button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
@@ -187,6 +187,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="onRadioButtonClicked"
             android:text="@string/Aug" />
 
         <RadioButton
@@ -218,6 +219,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="onRadioButtonClicked"
             android:text="@string/Dec"
             tools:layout_editor_absoluteX="31dp"
             tools:layout_editor_absoluteY="130dp" />
@@ -235,5 +237,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/radioGroup"
         app:layout_constraintTop_toBottomOf="@+id/textViewDay" />
+
+    <TextView
+        android:id="@+id/textViewEntries"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toEndOf="@+id/radioGroup"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerDay" />
 
 </android.support.constraint.ConstraintLayout>
