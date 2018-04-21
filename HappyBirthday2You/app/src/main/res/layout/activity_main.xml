@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="48dp"
+        android:text="Submit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/monthField" />
+
+    <EditText
+        android:id="@+id/monthField"
+        android:layout_width="128dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="number"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/dayField"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/monthLabel" />
+
+    <EditText
+        android:id="@+id/dayField"
+        android:layout_width="123dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="number"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/monthField"
+        app:layout_constraintTop_toBottomOf="@+id/dayLabel" />
+
+    <TextView
+        android:id="@+id/monthLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/month_label"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/monthField"
+        app:layout_constraintTop_toBottomOf="@+id/nameField" />
+
+    <TextView
+        android:id="@+id/dayLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/day_label"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/dayField"
+        app:layout_constraintTop_toBottomOf="@+id/nameField" />
+
+    <TextView
+        android:id="@+id/nameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/name_label"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/nameField"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/nameField"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="4dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:selectAllOnFocus="true"
+        android:singleLine="false"
+        android:text=""
+        app:layout_constraintStart_toStartOf="@+id/monthField"
+        app:layout_constraintTop_toBottomOf="@+id/nameLabel" />
+
+</android.support.constraint.ConstraintLayout>
