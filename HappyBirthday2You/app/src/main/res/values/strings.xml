@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Happy Birthday 2 You</string>
+
+    <string name="title">Find Birthday Matches</string>
+    <string name="name_label">Name</string>
+    <string name="month_label">Month</string>
+    <string name="day_label">Day</string>
+
+    <string name="day_warning">invalid day</string>
+    <string name="month_warning">invalid month</string>
+
+    <string name="form_warning">one or more invalid fields</string>
+</resources>
