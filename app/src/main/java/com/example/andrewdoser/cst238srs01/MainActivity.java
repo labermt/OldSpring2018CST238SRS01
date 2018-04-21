@@ -179,27 +179,7 @@ public class MainActivity extends AppCompatActivity {
 
                                 }
                             }
-                            //if(WriteToFile())
-                           // {
-                                //count++;
-                              /*  CharSequence Sub = "Successfully Submitted information";
-                                int duration = Toast.LENGTH_LONG;
-                                Toast Tsub = Toast.makeText(getApplicationContext(), Sub, duration);
-                                TextView TsubMessage = (TextView) Tsub.getView().findViewById(android.R.id.message);
-                                Tsub.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 0, 0);
-                                TsubMessage.setTextColor(Color.rgb(0, 142, 0));
-                                Tsub.show();*/
-                            //}
-                            //if(ReadFromFile())
-                            //{
-                                /*CharSequence Test = Bday[0];
-                                int dur = Toast.LENGTH_LONG;
-                                Toast Ttest = Toast.makeText(getApplicationContext(), Test, dur);
-                                TextView TtestMessage = (TextView) Ttest.getView().findViewById(android.R.id.message);
-                                Ttest.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 0, 0);
-                                TtestMessage.setTextColor(Color.rgb(0, 142, 0));
-                                Ttest.show();*/
-                            //}
+
                         }
 
 
