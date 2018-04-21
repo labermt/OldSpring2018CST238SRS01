@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textview_name_label"
+        android:layout_width="146dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:background="#e0e0e0"
+        android:padding="10dp"
+        android:text="@string/textview_name_label"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/edittext_name_input"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edittext_name_input"
+        android:layout_width="231dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="@string/nameHint"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textview_name_label"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textview_month_label"
+        android:layout_width="145dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:background="#e0e0e0"
+        android:padding="10dp"
+        android:text="@string/textview_month_label"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/edittext_month_input"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_name_label" />
+
+    <EditText
+        android:id="@+id/edittext_month_input"
+        android:layout_width="232dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="@string/monthHint"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textview_month_label"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_name_input" />
+
+    <TextView
+        android:id="@+id/textview_day_label"
+        android:layout_width="146dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:background="#e0e0e0"
+        android:padding="10dp"
+        android:text="@string/textview_day_label"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/edittext_day_input"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_month_label" />
+
+    <EditText
+        android:id="@+id/edittext_day_input"
+        android:layout_width="231dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="@string/dayHint"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textview_day_label"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_month_input" />
+
+    <Button
+        android:id="@+id/button_submittion"
+        android:layout_width="284dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/black"
+        android:onClick="submitInfo"
+        android:text="@string/button_submittion"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toStartOf="@+id/button_resetstorage"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textview_day_label" />
+
+    <Button
+        android:id="@+id/button_resetstorage"
+        android:layout_width="wrap_content"
+        android:layout_height="47dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/black"
+        android:onClick="resetStorage"
+        android:text="@string/button_resetstorage"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/button_submittion"
+        app:layout_constraintTop_toBottomOf="@id/edittext_day_input" />
+
+    <TextView
+        android:id="@+id/textview_count_label"
+        android:layout_width="292dp"
+        android:layout_height="44dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:background="#e0e0e0"
+        android:padding="10dp"
+        android:text="@string/textview_count_label"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/textview_count_display"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_submittion" />
+
+    <TextView
+        android:id="@+id/textview_count_display"
+        android:layout_width="84dp"
+        android:layout_height="44dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="16dp"
+        android:padding="10dp"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textview_count_label"
+        app:layout_constraintTop_toBottomOf="@+id/button_resetstorage" />
+
+    <TextView
+        android:id="@+id/textview_output_mssg"
+        android:layout_width="379dp"
+        android:layout_height="156dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/textview_message_label"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_count_label" />
+
+</android.support.constraint.ConstraintLayout>

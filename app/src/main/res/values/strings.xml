@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">HappyBirthdayToYou</string>
+    <string name="monthHint">ex. January</string>
+    <string name="nameHint">ex. John Stewart</string>
+    <string name="dayHint">ex. 9</string>
+    <string name="textview_name_label">Name:</string>
+    <string name="textview_month_label">Month:</string>
+    <string name="textview_day_label">Day:</string>
+    <string name="button_submittion">Submit</string>
+    <string name="button_resetstorage">Reset</string>
+    <string name="textview_count_label">Number of entry:</string>
+    <string name="textview_message_label">Message</string>
+    <string name="input_name_label">Enter your name</string>
+    <string name="input_month_label">Enter birth month</string>
+    <string name="input_day_label">Enter birth day</string>
+    <string name="textview_count_display">Empty</string>
+</resources>
